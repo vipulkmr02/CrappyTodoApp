@@ -11,4 +11,4 @@ So here's what it can do:
 Screenshots:
 ![Application](./screenshots/home.png)
 ![New Task](./screenshots/newTask.png)
-![Notifications](./screenshots/notificaions.png)
+![Notifications](./screenshots/notifications.png)
