@@ -9,6 +9,9 @@ So here's what it can do:
  - DELETE Tasks
 
 Screenshots:
-![Application](./screenshots/home.png)
+![Main Application](./screenshots/home.png)
+Main Application
 ![New Task](./screenshots/newTask.png)
+New Task
 ![Notifications](./screenshots/notifications.png)
+Notifications (react-toastify)
