@@ -1,0 +1,15 @@
+@import '@fontsource/roboto';
+
+.w-full {width: 100%;}
+.h-full {height: 100%;}
+
+.center-content {
+    display: grid;
+    place-items: center;
+}
+
+.border {
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.523);
+}
+.text-center { text-align: center;}

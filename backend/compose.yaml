@@ -1,0 +1,19 @@
+services:
+
+  backend:
+    build: .
+    environment:
+      - PORT=8000
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  db:
+    image: mongo:latest
+    ports:
+      - "8001:27017"
+    volumes:
+      - db_data:/data/db
+
+volumes:
+  db_data:
