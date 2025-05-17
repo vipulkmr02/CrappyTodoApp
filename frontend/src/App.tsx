@@ -93,7 +93,7 @@ function App() {
 
 
   return <>
-    <Typography variant='h2' sx={{margin: '2rem'}} className="text-center text-3xl">Tasks</Typography>
+    <Typography variant='h2' sx={{margin: '2rem'}} className="text-center text-3xl">Crappy Todo App</Typography>
     <TaskBox tasks={tasks} editTask={editTask} deleteTask={deleteTask} toggleCompletion={toggleCompletion} />
     <Fab sx={{
       position: 'absolute',
