@@ -10,8 +10,8 @@ So here's what it can do:
 
 Screenshots:
 ![Main Application](./screenshots/home.png)
-<center>**Main Application**</center>
+**Main Application**
 ![New Task](./screenshots/newTask.png)
-<center>**New Task** </center>
+**New Task**
 ![Notifications](./screenshots/notifications.png)
-<center>**Notifications (react-toastify)** </center>
+**Notifications (react-toastify)**
