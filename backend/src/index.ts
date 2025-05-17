@@ -1,12 +1,13 @@
 import express from "express";
 import cors from "cors";
 import { createTask, deleteTask, getTasks, Task, updateTask } from "./tasks";
+import { log } from "console";
 
 const PORT = process.env.PORT || 3000;
 const app = express();
 
 const corsOptions = {
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
     credentials: true,

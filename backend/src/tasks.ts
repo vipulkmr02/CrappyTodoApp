@@ -1,10 +1,12 @@
 import { connect, Types } from "mongoose";
 import { TaskModel } from "./models";
+import { env } from "process";
 
-connect("mongodb://localhost:8001/crappy_todo_app");
+console.log("DEBUG:", env.DB_URL!);
+connect(env.DB_URL!).catch((err) => {});
 
 export interface Task {
-    id? : string;
+    id?: string;
     title: string;
     description: string;
     completed: boolean;

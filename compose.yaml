@@ -1,0 +1,36 @@
+services:
+  backend:
+    build: ./backend/
+    container_name: cta-backend
+    environment:
+      - PORT=8000
+      - DB_URL=mongodb://cta-db:27017/crappy_todo_app
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+  frontend:
+    container_name: cta-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - API_URL=http://localhost:8000
+    ports:
+      - "3000:80"
+    networks:
+      - app-network
+  db:
+    image: mongo
+    container_name: cta-db
+    volumes:
+      - db_data:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:

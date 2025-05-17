@@ -1,8 +1,9 @@
-FROM node
+FROM node:alpine AS build
 WORKDIR /app
-COPY package*.json ./
+COPY ./package*.json .
 RUN npm install
 COPY . .
 ENV PORT=8000
 EXPOSE 8000
-CMD [ "sh", "-c", "npm run build && npm start"]
+RUN npm run build
+CMD ["npm", "start"]
