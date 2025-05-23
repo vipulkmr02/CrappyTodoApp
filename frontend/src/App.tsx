@@ -15,6 +15,7 @@ const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 function App() {
   const [form, setFormValues] = useState({ title: "", description: "" })
+  const resetForm = () => { setFormValues({ title: "", description: "" }) }
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editTask, setEditTask] = useState(-1);
   const [tasks, setTasks] = useState<Array<Task>>([]);
@@ -111,7 +112,14 @@ function App() {
     <Typography variant='h2' sx={{ margin: '2rem' }}
       className="text-center text-3xl">Crappy Todo App</Typography>
     <TaskBox tasks={tasks}
-      editTask={(i: number) => { setDialogOpen(true); setEditTask(i) }}
+      editTask={(i: number) => {
+        setDialogOpen(true);
+        setEditTask(i);
+        setFormValues({
+          title: tasks[i].title,
+          description: tasks[i].description
+        });
+      }}
       deleteTask={deleteTask} toggleCompletion={toggleCompletion} />
     <Fab sx={{
       position: 'absolute',
@@ -123,7 +131,11 @@ function App() {
       onClick={() => setDialogOpen(!dialogOpen)}
     > <Add /> </Fab>
     <TaskDialog
-      dialogOpen={dialogOpen} close={() => setDialogOpen(false)}
+      dialogOpen={dialogOpen} close={() => {
+        setDialogOpen(false) // close the dialog
+        resetForm();  // resets the form values
+        setEditTask(-1);  // setting no task to edit
+      }}
       values={[form, setFormValues]}
       action={editTask === -1 && saveTask || updateTask}
       actionLabel={editTask === -1 && 'Save Task' || 'Update Task'}
@@ -165,26 +177,25 @@ function TaskDialog({ title, dialogOpen, values, close, action, actionLabel }:
     >
       <CloseOutlined />
     </IconButton>
-    <DialogContent sx={{ display: 'flex', flexDirection: 'column' }}>
+    <DialogContent sx={{ display: 'flex', gap: "1rem", flexDirection: 'column' }}>
       <TextField
         id="nt-title"
-        sx={{ margin: '1rem' }}
         variant='outlined' autoFocus
         required name="title"
-        value={values[0].title}
+        value={values[0].title || ''}
         label="Title"
         onChange={handleChange}
       />
       <TextField
         id="nt-description"
-        sx={{ margin: '1rem' }}
         onChange={handleChange}
-        value={values[0].description}
+        value={values[0].description || ''}
         variant='outlined'
         multiline rows={5}
         required name="description"
         label="Description" />
-      <Button onClick={() => { action(); close() }} variant='contained' sx={{ margin: '1rem' }}> {actionLabel} </Button>
+      <Button onClick={() => { action(); close() }}
+        variant='contained' > {actionLabel} </Button>
     </DialogContent>
   </Dialog>
 }

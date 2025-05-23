@@ -7,12 +7,15 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 const corsOptions = {
-    origin: ["http://localhost:3000"],
+    origin: [
+        process.env.FRONTEND_URL!,
+        "http://localhost:5173", // development url
+    ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
     optionsSuccessStatus: 200,
-}
+};
 
 app.use(express.json());
 app.use(cors(corsOptions));
