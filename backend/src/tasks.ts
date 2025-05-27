@@ -2,8 +2,8 @@ import { connect, Types } from "mongoose";
 import { TaskModel } from "./models";
 import { env } from "process";
 
-console.log("DEBUG:", env.DB_URL!);
-connect(env.DB_URL!).catch((err) => {});
+const DB_URL = env.DB_URL || "mongodb://localhost:27017/crappy_todo_app";
+connect(DB_URL).catch((err) => {});
 
 export interface Task {
     id?: string;
