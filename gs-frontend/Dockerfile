@@ -5,7 +5,7 @@ RUN npm install
 COPY . .
 ARG API_URL
 ENV VITE_API_URL=$API_URL
-RUN npm run build
+RUN npx expo export --platform web
 
 FROM nginx:stable-alpine
 COPY --from=build /app/dist /usr/share/nginx/html

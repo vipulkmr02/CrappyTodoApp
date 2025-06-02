@@ -6,7 +6,7 @@
     "start": "expo start",
     "android": "DARK_MODE=media expo start --android",
     "ios": "DARK_MODE=media expo start --ios",
-    "web": "DARK_MODE=media expo start --web --port=8084",
+    "web": "DARK_MODE=media expo start --web --port=5173",
     "test": "jest --watchAll",
     "lint": "expo lint"
   },
