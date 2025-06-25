@@ -1,9 +1,10 @@
 import express from "express";
 import cors from "cors";
-import { createTask, deleteTask, getTasks, Task, updateTask } from "./tasks";
+import { createTask, deleteTask, getTasks, Task, updateTask } from "tasks";
 import { EventEmitter } from "events";
 
 const PORT = process.env.PORT || 8000;
+const DB_TYPE = process.env.DB_TYPE || "mongodb";
 const app = express();
 const taskEmitter = new EventEmitter();
 
